@@ -1,0 +1,7 @@
+{
+	"version": 2,
+	"projects": {
+		"nx-storybook-bug-showcase-app": "apps/nx-storybook-bug-showcase-app",
+		"nx-storybook-bug-showcase-app-e2e": "apps/nx-storybook-bug-showcase-app-e2e"
+	}
+}

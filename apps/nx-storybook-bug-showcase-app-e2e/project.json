@@ -1,0 +1,28 @@
+{
+	"root": "apps/nx-storybook-bug-showcase-app-e2e",
+	"sourceRoot": "apps/nx-storybook-bug-showcase-app-e2e/src",
+	"projectType": "application",
+	"targets": {
+		"e2e": {
+			"executor": "@nrwl/cypress:cypress",
+			"options": {
+				"cypressConfig": "apps/nx-storybook-bug-showcase-app-e2e/cypress.json",
+				"devServerTarget": "nx-storybook-bug-showcase-app:serve"
+			},
+			"configurations": {
+				"production": {
+					"devServerTarget": "nx-storybook-bug-showcase-app:serve:production"
+				}
+			}
+		},
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["apps/nx-storybook-bug-showcase-app-e2e/**/*.{js,ts}"]
+			}
+		}
+	},
+	"tags": [],
+	"implicitDependencies": ["nx-storybook-bug-showcase-app"]
+}

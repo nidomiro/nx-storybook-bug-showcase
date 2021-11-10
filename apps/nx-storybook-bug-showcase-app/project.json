@@ -1,0 +1,85 @@
+{
+	"root": "apps/nx-storybook-bug-showcase-app",
+	"sourceRoot": "apps/nx-storybook-bug-showcase-app",
+	"projectType": "application",
+	"targets": {
+		"build": {
+			"executor": "@nrwl/next:build",
+			"outputs": ["{options.outputPath}"],
+			"defaultConfiguration": "production",
+			"options": {
+				"root": "apps/nx-storybook-bug-showcase-app",
+				"outputPath": "dist/apps/nx-storybook-bug-showcase-app"
+			},
+			"configurations": {
+				"production": {}
+			}
+		},
+		"serve": {
+			"executor": "@nrwl/next:server",
+			"options": {
+				"buildTarget": "nx-storybook-bug-showcase-app:build",
+				"dev": true
+			},
+			"configurations": {
+				"production": {
+					"buildTarget": "nx-storybook-bug-showcase-app:build:production",
+					"dev": false
+				}
+			}
+		},
+		"export": {
+			"executor": "@nrwl/next:export",
+			"options": {
+				"buildTarget": "nx-storybook-bug-showcase-app:build:production"
+			}
+		},
+		"test": {
+			"executor": "@nrwl/jest:jest",
+			"outputs": ["coverage/apps/nx-storybook-bug-showcase-app"],
+			"options": {
+				"jestConfig": "apps/nx-storybook-bug-showcase-app/jest.config.js",
+				"passWithNoTests": true
+			}
+		},
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["apps/nx-storybook-bug-showcase-app/**/*.{ts,tsx,js,jsx}"]
+			}
+		},
+		"storybook": {
+			"executor": "@nrwl/storybook:storybook",
+			"options": {
+				"uiFramework": "@storybook/react",
+				"port": 4400,
+				"config": {
+					"configFolder": "apps/nx-storybook-bug-showcase-app/.storybook"
+				}
+			},
+			"configurations": {
+				"ci": {
+					"quiet": true
+				}
+			}
+		},
+		"build-storybook": {
+			"executor": "@nrwl/storybook:build",
+			"outputs": ["{options.outputPath}"],
+			"options": {
+				"uiFramework": "@storybook/react",
+				"outputPath": "dist/storybook/nx-storybook-bug-showcase-app",
+				"config": {
+					"configFolder": "apps/nx-storybook-bug-showcase-app/.storybook"
+				}
+			},
+			"configurations": {
+				"ci": {
+					"quiet": true
+				}
+			}
+		}
+	},
+	"tags": []
+}
